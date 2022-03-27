@@ -20,27 +20,31 @@ function generatePassword() {
   var numChar = prompt("How many characters are required in your password?");
   if (numChar >= 8 && numChar < 129){
     passwordLength = parseInt(numChar);
-
-  console.log("The number of characters in the password is " + numChar)
+  // takes user input to determine number of characters in the generated password
   } else {
-      alert("Please select a value between 8 and 128") //NEEDS TO RE-PROMPT USER TO SELECT CORRECT NUMBER
-      return "";
+      alert("Please select a value between 8 and 128");
+      return ""; //re-prompts user to select a value between 8 and 128
     }
-  var symbol = confirm("Press confirm if you would like special characters");
+  var symbol = confirm("Press confirm if you would like special characters. 'OK' for yes, cancel for 'no'.");
   if (symbol === true) {
-    console.log("There are special characters.");
+   // Adds random symbols to the empty password array
     passwordArray = passwordArray.concat(symbolSet);
   }
-  var uppercase = confirm("Press confirm if you would like uppercase letters.");
+  var uppercase = confirm("Press confirm if you would like uppercase letters. 'OK' for yes, cancel for 'no'.");
   if (uppercase === true) {
-    console.log("There are uppercase letters.");
+   // Adds random uppercase letters to the empty password array
     passwordArray = passwordArray.concat(uppercaseArray);
   } 
-  var lowercase = confirm("Press confirm if you would like lowercase letters.");
+  var lowercase = confirm("Press confirm if you would like lowercase letters. 'OK' for yes, cancel for 'no'.");
   if (lowercase === true) {
-    console.log("There are lowercase letters.");
+    // Adds random lowercase letters to the empty password array
     passwordArray = passwordArray.concat(lowercaseArray);
   } 
+  var number = confirm("Press confirm if you would like numbers. 'OK' for yes, cancel for 'no'.");
+  if (number === true) {
+    // Adds random numbers to the empty password array
+    passwordArray = passwordArray.concat(numArray);
+  }
   if (passwordArray.length === 0){
     alert("Please choose at least one character type");
     return "";
@@ -53,5 +57,5 @@ function generatePassword() {
 return randomPassword;
 }
 
-// Add event listener to generate button
+// event listener to generate button
 generateBtn.addEventListener("click", writePassword);
